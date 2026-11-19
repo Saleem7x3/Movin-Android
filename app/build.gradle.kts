@@ -28,15 +28,15 @@ android {
             // Matches Termux's compiled /data/data/com.termux/files/usr prefix for native speed (no proot)
             applicationId = "com.termux"
             buildConfigField("Boolean", "IS_NATIVE_TERMUX_PREFIX", "true")
-            buildConfigField("String", "LINUX_PREFIX", ""/data/data/com.termux/files/usr"")
-            buildConfigField("String", "LINUX_HOME", ""/data/data/com.termux/files/home"")
+            buildConfigField("String", "LINUX_PREFIX", "\"/data/data/com.termux/files/usr\"")
+            buildConfigField("String", "LINUX_HOME", "\"/data/data/com.termux/files/home\"")
         }
         create("standalone") {
             dimension = "runtime"
             applicationId = "com.movin.app"
             buildConfigField("Boolean", "IS_NATIVE_TERMUX_PREFIX", "false")
-            buildConfigField("String", "LINUX_PREFIX", ""/data/data/com.movin.app/files/usr"")
-            buildConfigField("String", "LINUX_HOME", ""/data/data/com.movin.app/files/home"")
+            buildConfigField("String", "LINUX_PREFIX", "\"/data/data/com.movin.app/files/usr\"")
+            buildConfigField("String", "LINUX_HOME", "\"/data/data/com.movin.app/files/home\"")
         }
     }
 
