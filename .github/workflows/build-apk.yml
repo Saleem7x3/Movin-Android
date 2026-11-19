@@ -1,0 +1,43 @@
+name: Build Movin Android APK
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Set up Gradle 8.9
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: Build Native Termux Flavor APK (com.termux)
+        run: gradle assembleTermuxDebug --no-daemon
+
+      - name: Build Standalone Flavor APK (com.movin.app)
+        run: gradle assembleStandaloneDebug --no-daemon
+
+      - name: Upload Movin Native Termux APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: movin-termux-native-debug-apk
+          path: app/build/outputs/apk/termux/debug/*.apk
+
+      - name: Upload Movin Standalone APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: movin-standalone-debug-apk
+          path: app/build/outputs/apk/standalone/debug/*.apk
