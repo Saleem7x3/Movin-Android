@@ -121,8 +121,7 @@ fun SettingsScreen(
             Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 Text("Linux Runtime", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
                 Text(
-                    "Flavor: ${if (BuildConfig.IS_NATIVE_TERMUX_PREFIX) "Native Termux (com.termux)" else "Standalone (com.movin.app)"}
-Prefix: ${BuildConfig.LINUX_PREFIX}",
+                    "Flavor: ${if (BuildConfig.IS_NATIVE_TERMUX_PREFIX) "Native Termux (com.termux)" else "Standalone (com.movin.app)"}\nPrefix: ${BuildConfig.LINUX_PREFIX}",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
